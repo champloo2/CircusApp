@@ -37,7 +37,7 @@ public class WebController {
 	{
 	Apparatus a = new Apparatus();
 	model.addAttribute("newApparatus", a);
-	return "index";
+	return "inputApparatus";  //earlier, this said "index" and it was not working
 	}
 	
 	
