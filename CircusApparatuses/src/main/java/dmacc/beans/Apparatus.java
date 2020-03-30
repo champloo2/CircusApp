@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,6 +25,7 @@ public class Apparatus {
 	private String nameOfApparatus;
 	private String level;
 	@Autowired  //do i need this?
+	@ManyToOne //should this actually be OneToMany?
 	private List<Maneuver> maneuverList;
 
 }
