@@ -19,6 +19,10 @@ public class WebController {
 	//when another 
 	@GetMapping("/viewAll")
 	public String viewAllApparatuses(Model model) {
+		if(repo.findAll().isEmpty()) 
+		{
+		return addNewApparatus(model);
+		}
 	
 	// "ListApparatuses" will use the "apparatuses" to identify the item it is working with
 	//on ListApparatuses , "apparatuses" should match "apparatuses" below
@@ -29,7 +33,7 @@ public class WebController {
 	
 	//comes from templates? //comes from a form
 	@GetMapping("/inputApparatus")
-	public String addNewContact(Model model) 
+	public String addNewApparatus(Model model) 
 	{
 	Apparatus a = new Apparatus();
 	model.addAttribute("newApparatus", a);
@@ -39,7 +43,7 @@ public class WebController {
 	
 	//comes from static
 	@PostMapping("/inputApparatus")
-	public String addNewContact(@ModelAttribute Apparatus c,Model model) {
+	public String addNewApparatus(@ModelAttribute Apparatus c,Model model) {
 	repo.save(c);
 	return viewAllApparatuses(model);
 	}
