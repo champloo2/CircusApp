@@ -1,10 +1,13 @@
 package dmacc.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +23,10 @@ public class Maneuver {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String maneuverName;
+	private String maneuverConfidence;
 	
+	@ManyToOne (cascade= {CascadeType.REFRESH} ,fetch = FetchType.LAZY)
+	// do i need this? @JoinColumn(name="spider_ID",referencedColumnName="ID")
 	private Apparatus apparatus;
 	
 
