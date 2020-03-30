@@ -10,7 +10,7 @@
 <table>
 <tr th:each="currentApparatus : ${apparatuses}" >
 <td th:text="${currentApparatus.id}" />
-<td th:text="${currentApparatus.nameOfAparatus}" />
+<td th:text="${currentApparatus.nameOfApparatus}" />
 <td th:text="${currentApparatus.classLevel}" />
 <td><a th:href="@{/edit/{id}(id=${currentApparatus.id})}">Edit</a></td>
 <td><a th:href="@{/delete/{id}(id=${currentApparatus.id})}">Delete</a></td>
