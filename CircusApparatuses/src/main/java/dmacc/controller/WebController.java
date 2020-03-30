@@ -24,6 +24,7 @@ public class WebController {
 	return "ListApparatuses";
 	}
 	
+	//earlier "view all" was broken, had something to do with if statement for empty
 	// "ListApparatuses" will use the "apparatuses" to identify the item it is working with
 	//on ListApparatuses , "apparatuses" should match "apparatuses" below
 
