@@ -1,0 +1,14 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add a new apparatus</title>
+</head>
+<body>
+<form th:object="${newApparatus}" th:action= "@{/update/{id}(id=${newApparatus.id})}" method='POST'>
+Name: <input name="name" size="20" th:field="*{nameOfApparatus}"><br />
+Class Level: <input name="relationship" size="10" th:field="*{classLevel}"><br />
+<input name="submit" type="submit" value="submit" />
+</form>
+<a href="viewAll">View all Apparatuses</a>
+</body>
+</html>

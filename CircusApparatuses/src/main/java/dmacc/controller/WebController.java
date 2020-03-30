@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import dmacc.beans.Apparatus;
 import dmacc.repository.ApparatusRepository;
 
 @Controller
@@ -13,6 +16,7 @@ public class WebController {
 	@Autowired
 	ApparatusRepository repo;
 	
+	//when another 
 	@GetMapping("/viewAll")
 	public String viewAllApparatuses(Model model) {
 	
@@ -21,5 +25,26 @@ public class WebController {
 	model.addAttribute("apparatuses", repo.findAll());
 	return "ListApparatuses";
 	}
+	
+	
+	//comes from templates? //comes from a form
+	@GetMapping("/inputApparatus")
+	public String addNewContact(Model model) 
+	{
+	Apparatus a = new Apparatus();
+	model.addAttribute("newApparatus", a);
+	return "index";
+	}
+	
+	
+	//comes from static
+	@PostMapping("/inputApparatus")
+	public String addNewContact(@ModelAttribute Apparatus c,Model model) {
+	repo.save(c);
+	return viewAllApparatuses(model);
+	}
+	
+	
+	
 
 }

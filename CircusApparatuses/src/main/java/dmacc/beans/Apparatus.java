@@ -24,7 +24,7 @@ public class Apparatus {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String nameOfApparatus;
-	private String level;
+	private String classLevel;
 	
 	//@Autowired  //do i need this?
 	//got this solution from 
