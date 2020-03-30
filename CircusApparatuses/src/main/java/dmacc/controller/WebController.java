@@ -32,7 +32,7 @@ public class WebController {
 	
 	
 	//comes from templates? //comes from a form
-	@GetMapping("/inputApparatus")
+	@GetMapping("/addApparatus")
 	public String addNewApparatus(Model model) 
 	{
 	Apparatus a = new Apparatus();
@@ -42,7 +42,7 @@ public class WebController {
 	
 	
 	//comes from static
-	@PostMapping("/inputApparatus")
+	@PostMapping("/addApparatus")
 	public String addNewApparatus(@ModelAttribute Apparatus c,Model model) {
 	repo.save(c);
 	return viewAllApparatuses(model);
