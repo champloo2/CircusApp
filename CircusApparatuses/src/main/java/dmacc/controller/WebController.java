@@ -18,17 +18,16 @@ public class WebController {
 	
 	//when another 
 	@GetMapping("/viewAll")
-	public String viewAllApparatuses(Model model) {
-		if(repo.findAll().isEmpty()) 
-		{
-		return addNewApparatus(model);
-		}
-	
-	// "ListApparatuses" will use the "apparatuses" to identify the item it is working with
-	//on ListApparatuses , "apparatuses" should match "apparatuses" below
+	public String viewAllApparatuses(Model model) 
+	{
 	model.addAttribute("apparatuses", repo.findAll());
 	return "ListApparatuses";
 	}
+	
+	// "ListApparatuses" will use the "apparatuses" to identify the item it is working with
+	//on ListApparatuses , "apparatuses" should match "apparatuses" below
+
+	
 	
 	
 	//comes from templates? //comes from a form
