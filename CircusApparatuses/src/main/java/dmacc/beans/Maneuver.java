@@ -20,6 +20,7 @@ public class Maneuver {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String maneuverName;
+	
 	private Apparatus apparatus;
 	
 
