@@ -18,7 +18,7 @@ public class WebController {
 	ApparatusRepository repo;
 	
 	//when another 
-	@GetMapping("/viewAll")
+	@GetMapping({"/", "viewAll"})
 	public String viewAllApparatuses(Model model) 
 	{
 	if(repo.findAll().isEmpty()) 
