@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import dmacc.beans.Apparatus;
@@ -20,6 +21,10 @@ public class WebController {
 	@GetMapping("/viewAll")
 	public String viewAllApparatuses(Model model) 
 	{
+	if(repo.findAll().isEmpty()) 
+	{
+	return addNewApparatus(model);
+	}
 	model.addAttribute("apparatuses", repo.findAll());
 	return "ListApparatuses";
 	}
@@ -41,13 +46,35 @@ public class WebController {
 	}
 	
 	
+	
 	//comes from static
 	@PostMapping("/inputApparatus")
 	public String addNewApparatus(@ModelAttribute Apparatus c,Model model) {
 	repo.save(c);
 	return viewAllApparatuses(model);
+	} 
+	
+	@GetMapping("/edit/{id}")
+	public String showUpdateContact(@PathVariable("id") long id,Model model) 
+	{
+	Apparatus a = repo.findById(id).orElse(null);
+	model.addAttribute("newApparatus", a);
+	return "inputApparatus";
 	}
 	
+	@PostMapping("/update/{id}")
+	public String reviseContact(Apparatus c, Model model) {
+	repo.save(c);
+	return viewAllApparatuses(model);
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteUser(@PathVariable("id") long id, Model model) 
+	{
+	Apparatus c = repo.findById(id).orElse(null);
+	repo.delete(c);
+	return viewAllApparatuses(model);
+	}
 	
 	
 
