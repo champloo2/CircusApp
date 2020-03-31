@@ -1,11 +1,11 @@
 package dmacc.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+//import org.springframework.stereotype.Repository;
 
 import dmacc.beans.Apparatus;
 
-@Repository
+//@Repository
 public interface ApparatusRepository extends JpaRepository<Apparatus, Long>
 {
 

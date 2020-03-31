@@ -4,9 +4,9 @@
 <title>Add a new apparatus</title>
 </head>
 <body>
-<form th:object="${newApparatus}" th:action= "@{/update/{id}(id=${newApparatus.id})}" method='POST'>
-Name: <input name="name" size="20"><br />
-Class Level: <input name="relationship" size="10"><br />
+<form th:object="${newApparatus}" th:action= "@{/inputApparatus}" method='POST'>
+Name: <input name="nameOfApparatus" size="20"><br />
+Class Level: <input name="classLevel" size="10"><br />
 <input name="submit" type="submit" value="submit" />
 </form>
 <a href="viewAll">View all Apparatuses</a>
