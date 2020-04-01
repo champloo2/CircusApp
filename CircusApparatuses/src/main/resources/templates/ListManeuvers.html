@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Viewing maneuvers</title>
 </head>
 <body>
-
+<form>
+<table>
+<tr th:each="currentManeuver : ${maneuversByApp}" >
+<td th:text="${currentManeuver.maneuverName}" />
+<td th:text="${currentManeuver.maneuverConfidence}" />
+<td><a th:href="@{/edit/{id}(id=${currentManeuver.id})}">Edit</a></td>
+<td><a th:href="@{/deleteManeuver/{id}(id=${currentApparatus.id})}">Delete</a></td>
+<td><a th:href="@{/listManeuversById/{id}(id=${currentApparatus.id})}">View Maneuvers</a></td>
+</tr>
+</table>
+</form>
+<a href="../inputManeuver">Add a new maneuver</a>
 </body>
 </html>
