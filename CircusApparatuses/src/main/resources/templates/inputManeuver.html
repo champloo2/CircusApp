@@ -1,0 +1,14 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add a new maneuver</title>
+</head>
+<body>
+<form th:object="${newManeuver}" th:action= "@{/update/{id}(id=${newManeuver.id})}" method='POST'>
+Name: <input name="maneuverName" size="20" th:field="*{maneuverName}"><br />
+Class Level: <input name="maneuverConfidence" size="10" th:field="*{maneuverConfidence}"><br />
+<input name="submit" type="submit" value="submit" />
+</form>
+<a href="viewAll">View all Apparatuses</a>
+</body>
+</html>

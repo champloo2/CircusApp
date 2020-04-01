@@ -105,12 +105,13 @@ public class WebController {
 	}
 	
 	
-	@GetMapping("/inputManeuver")
+	@GetMapping("/inputManeuver/{id}")
 	public String addNewManeuver(@PathVariable("id") long id, Model model) 
 	{
-	Apparatus a = new Apparatus();
-	model.addAttribute("newApparatus", a);
-	return "inputApparatus";  //earlier, this said "index" and it was not working
+	Apparatus c = repo.findById(id).orElse(null);
+	Maneuver m = new Maneuver(c);
+	model.addAttribute("newManeuver", m);
+	return "inputManeuver";  //earlier, this said "index" and it was not working
 	}
 	
 	
