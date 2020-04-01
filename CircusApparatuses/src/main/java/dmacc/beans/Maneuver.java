@@ -29,5 +29,16 @@ public class Maneuver {
 	// do i need this? @JoinColumn(name="spider_ID",referencedColumnName="ID")
 	private Apparatus apparatus;
 	
+	
+	
+	public Maneuver (Apparatus app)
+	{
+		this.apparatus = app;
+	}
+	
+	
+	
+	
+	
 
 }

@@ -14,7 +14,7 @@
 <td th:text="${currentApparatus.classLevel}" />
 <td><a th:href="@{/edit/{id}(id=${currentApparatus.id})}">Edit</a></td>
 <td><a th:href="@{/delete/{id}(id=${currentApparatus.id})}">Delete</a></td>
-<td><a th:href="@{/listManeuver/{id}(id=${currentApparatus.id})}">View Maneuvers</a></td>
+<td><a th:href="@{/listManeuversByAppId/{id}(id=${currentApparatus.id})}">View Maneuvers</a></td>
 </tr>
 </table>
 </form>

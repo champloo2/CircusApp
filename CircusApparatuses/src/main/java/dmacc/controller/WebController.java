@@ -1,5 +1,8 @@
 package dmacc.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import dmacc.beans.Apparatus;
+import dmacc.beans.Maneuver;
 import dmacc.repository.ApparatusRepository;
+import dmacc.repository.ManeuversRepository;
 
 @Controller
 public class WebController {
@@ -17,8 +22,11 @@ public class WebController {
 	@Autowired
 	ApparatusRepository repo;
 	
+	@Autowired
+	ManeuversRepository mRepo;
+	
 	//when another 
-	@GetMapping("/viewAll")
+	@GetMapping({"/", "viewAll"})
 	public String viewAllApparatuses(Model model) 
 	{
 	if(repo.findAll().isEmpty()) 
@@ -75,6 +83,47 @@ public class WebController {
 	repo.delete(c);
 	return viewAllApparatuses(model);
 	}
+
+	
+	
+	
+	@GetMapping("/listManeuversByAppId/{id}")
+	public String viewManeuversByAppId(@PathVariable("id") long id, Model model) 
+	{
+	Apparatus c = repo.findById(id).orElse(null);
+	List<Maneuver> listByApp=new ArrayList<Maneuver>();
+	for (Maneuver m : mRepo.findAll())
+	{
+		if(c.getId() == m.getApparatus().getId())
+		{
+		listByApp.add(m);
+		}
+	} 
+	model.addAttribute("appID", id);
+	model.addAttribute("maneuversByApp", listByApp);
+	return "ListManeuvers";
+	}
+	
+	
+	@GetMapping ("/inputManeuver/{id}")
+	public String addNewManeuver (@PathVariable("id") long id, Model model) 
+	{
+	//Apparatus c = repo.findById(id).orElse(null);
+	Maneuver m = new Maneuver();
+	model.addAttribute("newManeuver", m);
+	return "inputManeuver";  //earlier, this said "index" and it was not working
+	}
+	
+	
+	
+	//comes from static
+	@PostMapping("/inputManeuver")
+	public String addNewManeuver(@ModelAttribute Maneuver c,Model model) {
+	mRepo.save(c);
+	return viewAllApparatuses(model);
+	} 
+	
+	
 	
 	
 
