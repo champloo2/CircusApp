@@ -105,5 +105,25 @@ public class WebController {
 	}
 	
 	
+	@GetMapping("/inputManeuver")
+	public String addNewManeuver(@PathVariable("id") long id, Model model) 
+	{
+	Apparatus a = new Apparatus();
+	model.addAttribute("newApparatus", a);
+	return "inputApparatus";  //earlier, this said "index" and it was not working
+	}
+	
+	
+	
+	//comes from static
+	@PostMapping("/inputManeuver")
+	public String addNewManeuver(@ModelAttribute Maneuver c,Model model) {
+	mRepo.save(c);
+	return viewAllApparatuses(model);
+	} 
+	
+	
+	
+	
 
 }
