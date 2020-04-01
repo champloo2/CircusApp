@@ -105,8 +105,8 @@ public class WebController {
 	}
 	
 	
-	@GetMapping ("/inputManeuver")//("/inputManeuver/{id}")
-	public String addNewManeuver (Model model) //(@PathVariable("id") long id, Model model) 
+	@GetMapping ("/inputManeuver/{id}")
+	public String addNewManeuver (@PathVariable("id") long id, Model model) 
 	{
 	//Apparatus c = repo.findById(id).orElse(null);
 	Maneuver m = new Maneuver();
