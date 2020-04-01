@@ -99,17 +99,17 @@ public class WebController {
 		listByApp.add(m);
 		}
 	} 
-	
+	model.addAttribute("appID", id);
 	model.addAttribute("maneuversByApp", listByApp);
 	return "ListManeuvers";
 	}
 	
 	
-	@GetMapping("/inputManeuver/{id}")
-	public String addNewManeuver(@PathVariable("id") long id, Model model) 
+	@GetMapping ("/inputManeuver")//("/inputManeuver/{id}")
+	public String addNewManeuver (Model model) //(@PathVariable("id") long id, Model model) 
 	{
-	Apparatus c = repo.findById(id).orElse(null);
-	Maneuver m = new Maneuver(c);
+	//Apparatus c = repo.findById(id).orElse(null);
+	Maneuver m = new Maneuver();
 	model.addAttribute("newManeuver", m);
 	return "inputManeuver";  //earlier, this said "index" and it was not working
 	}
