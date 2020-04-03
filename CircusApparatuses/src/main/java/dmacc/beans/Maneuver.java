@@ -24,6 +24,7 @@ public class Maneuver {
 	private long id;
 	private String maneuverName;
 	private String maneuverConfidence;
+
 	
 	@ManyToOne (cascade= {CascadeType.REFRESH} ,fetch = FetchType.LAZY)
 	// do i need this? @JoinColumn(name="spider_ID",referencedColumnName="ID")

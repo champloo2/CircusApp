@@ -6,7 +6,7 @@
 <body>
 <form>
 <table>
-<tr th:each="currentManeuver : ${maneuversByApp}" >
+<tr th:each="currentManeuver : ${ManeuverAttribute.maneuverList}" >
 <td th:text="${currentManeuver.maneuverName}" />
 <td th:text="${currentManeuver.maneuverConfidence}" />
 <td><a th:href="@{/edit/{id}(id=${currentManeuver.id})}">Edit</a></td>
@@ -14,7 +14,7 @@
 </tr>
 </table>
 </form>
-<a href="@{/inputManeuver/{id}(id=${appID})}">Add a new maneuver</a>
+<a href="/inputManeuver/{{id}(id=${ManeuverAttribute.appID})}">Add a new maneuver</a>
 <a href="/viewAll">View all Apparatuses</a>
 </body>
 </html>

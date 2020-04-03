@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import dmacc.attribute.ManeuverAttribute;
 import dmacc.beans.Apparatus;
 import dmacc.beans.Maneuver;
 import dmacc.repository.ApparatusRepository;
@@ -99,8 +100,18 @@ public class WebController {
 		listByApp.add(m);
 		}
 	} 
-	model.addAttribute("appID", id);
-	model.addAttribute("maneuversByApp", listByApp);
+	
+	
+	ManeuverAttribute mAttribute = new ManeuverAttribute(id, listByApp);
+	//create a new object with appID(type long), and lisyByApp array (type list)
+	//passobject as attribute
+	
+	//on html, attribute.appID will be the app id
+	//attricubute.listByApp for each will be the iteration
+	
+	
+
+	model.addAttribute("ManeuverAttribute", mAttribute);
 	return "ListManeuvers";
 	}
 	
